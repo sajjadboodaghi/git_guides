@@ -1,0 +1,473 @@
+﻿<html>
+	<head>
+		<title>Git Guide</title>
+		<style>
+			#main-title {
+				text-align: center;
+				margin-bottom: 20px;
+			}
+
+			#container {
+				margin: auto;
+			    width: 600px;
+			    border: 3px solid #224990;
+			    padding: 10px;
+			    border-radius: 25px;
+			}
+
+			.command {
+				font-size: 14px;
+				width: 300px;
+				padding: 5px 10px 5px 10px;
+			}
+
+			.description {
+				font-size: 12px;
+				direction: rtl;
+				padding: 5px 10px 5px 10px;
+			}
+
+		</style>
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("tr:even").css({
+					"background-color": "#300090",
+					"color":"white"
+				});
+
+			});
+		</script>
+	</head>
+<body>
+	
+
+	<div id="container">
+		<h1 id="main-title">Git Guide</h1>
+
+		<table id="command-list">
+
+			<tr>
+				<td class="command">cat .git/config</td>
+				<td class="description">مشاهده پیکربندی  محلی</td>
+			</tr>
+
+			<tr>
+				<td class="command">git --version</td>
+				<td class="description">نسخه ی git نصب شده را نمایش می دهد</td>
+			</tr>
+
+			<tr>
+				<td class="command">git add -A</td>
+				<td class="description">بردن تمام فایل های تغییر کرده به staging index</td>
+			</tr>	
+
+			<tr>
+				<td class="command">git add [نام فایل]</td>
+				<td class="description">بردن فایل تعیین شده به staging index</td>
+			</tr>
+
+			<tr>
+				<td class="command">git branch</td>
+				<td class="description">
+					نمایش فهرست branchهای محلی و مشخص کردن شاخه فعال
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git branch -r</td>
+				<td class="description">نمایش شاخه های remoteشده</td>
+			</tr>
+
+			<tr>
+				<td class="command">git branch -a</td>
+				<td class="description">نمایش شاخه های  محلی به همراه شاخه های remoteشده</td>
+			</tr>
+
+			<tr>
+				<td class="command">git branch [نام شاخه جدید]</td>
+				<td class="description">
+					ساخت branch جدید
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">
+					git branch --move [current name] [new name]<br/>
+					git branch -m [current name] [new name]<br/>
+				</td>
+				<td class="description">
+					تغییر نام شاخه
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">
+					git branch --delete [branch name] <br/>
+					git branch -d [branch name] <br/>
+				</td>
+				<td class="description">
+					حذف شاخه
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git checkout -- [نام فایل]</td>
+				<td class="description">دور انداختن تغییراتی که روی یک فایل خاص در working directory انجام شده و برگرداندن نسخه ی ذخیره شده ی آن در Repository Directory</td>
+			</tr>
+			<tr>
+				<td class="command">git checkout [hash code] [نام فایل]</td>
+				<td class="description">مشاهده ی وضعیت یک فایل به خصوص در یک commit مشخص. تفاوت checkout با reset در این است که ما از checkout برای بررسی کارهای گذشته استفاده می کنیم اما از reset برای انتقال به یک نقطه ی خاص استفاده می شود.</td>
+			</tr>
+			<tr>
+				<td class="command">git checkout [نام شاخه]</td>
+				<td class="description">جابه جایی بین شاخه ها - انتقال ه یک branch دیگر</td>
+			</tr>
+
+			<tr>
+				<td class="command">git checkout -b [نام شاخه]</td>
+				<td class="description">شاخه جدید می سازد و بلافاصله به آن checkout می کند</td>
+			</tr>
+
+			<tr>
+				<td class="command">git clean -n</td>
+				<td class="description">
+					این دستور فایل هایی که track نمی شن رو نمایش میده.
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git clean -f</td>
+				<td class="description">فایل هایی که track نمی شن پاک می شوند.</td>
+			</tr>
+
+			<tr>
+				<td class="command">git clean -i</td>
+				<td class="description">
+					علاوه بر نمایش فایل های track نشده یک منو نمایش داده می شود که می توان از آن برای حذف آن فایل ها استفاده کرد.
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git commit -m [پیغام]</td>
+				<td class="description">commit کردن تغییرات از staging index به Repository Directory</td>
+			</tr>	
+
+			<tr>
+				<td class="command">git commit -am [پیغام]</td>
+				<td class="description">این دستور فایلهای ویرایش شده و حذف شده را به staging index می فرستد و سپس commit میکند. فایل های جدیدی که track نمی شوند را اضافه نمی کند.</td>
+			</tr>
+			<tr>
+				<td class="command">git commit --amend -m [پیغام]</td>
+				<td class="description">این دستور تغییرات جدید را جایگزین آخرین commit می کند و پیغام جدید را ثبت می کند</td>
+			</tr>
+			<tr>
+				<td class="command">git config --list</td>
+				<td class="description">نمایش تمام تنظیمات پیکربندی چه محلی و چه سراسری</td>
+			</tr>	
+			<tr>
+				<td class="command">git config --local --list</td>
+				<td class="description">نمایش فهرست تنظیمات پیکربندی محلی</td>
+			</tr>
+			<tr>
+				<td class="command">git config --global --list</td>
+				<td class="description">نمایش فهرست تنظیمات پیکربندی سراسری</td>
+			</tr>
+			<tr>
+				<td class="command">git config --global user.name [نام کاربر]</td>
+				<td class="description">تغییر نام کاربر در فایل پیکربندی سراسری</td>
+			</tr>
+			<tr>
+				<td class="command">git config user.name [نام کاربر]</td>
+				<td class="description">تغییر نام کاربر در فایل پیکربندی محلی</td>
+			</tr>
+
+			<tr>
+				<td class="command">git config --global user.email [ایمیل کاربر]</td>
+				<td class="description">تغییر ایمیل کاربر در فایل پیکربندی سراسری</td>
+			</tr>
+			<tr>
+				<td class="command">git config user.email [ایمیل کاربر]</td>
+				<td class="description">تغییر ایمیل کاربر در فایل پیکربندی محلی</td>
+			</tr>
+
+			<tr>
+				<td class="command">git config --global core.excludefile [مسیر و نام فایل]</td>
+				<td class="description">استفاده از فایل .gitignore سراسری به جای فایل .gitignore محلی</td>
+			</tr>
+
+			<tr>
+				<td class="command">git config --global alias.[shortcut] "[command without git]"</td>
+				<td class="description">ساخت دستور میانبر </td>
+			</tr>
+
+			<tr>
+				<td class="command">git diff</td>
+				<td class="description">نمایش تفاوتهای فایل های تغییر کرده در working directory با همتاهای آنها در staging index</td>
+			</tr>
+
+			<tr>
+				<td class="command">git diff --staged</td>
+				<td class="description">نمایش تفاوتهای فایل های staging index با همتاهای آنها در repository directory</td>
+			</tr>
+
+			<tr>
+				<td class="command">git diff --word-diff <br/>git diff --color-words</td>
+				<td class="description">نمایش تفاوتها به صورت کلمه به کلمه</td>
+			</tr>
+
+			<tr>
+				<td class="command">git diff [نام شاخه]..[نام شاخه]</td>
+				<td class="description">تفاوت فایل های مختلف دو شاخه  ی مختلف  را نمایش می دهد</td>
+			</tr>
+
+			<tr>
+				<td class="command">git [دستور] --help  <br/> git help [دستور] <br/> git --help [دستور]</td>
+				<td class="description">نمایش توضیحات دستور</td>
+			</tr>
+
+			<tr>
+				<td class="command">git init</td>
+				<td class="description">شروع کردن کار گیت برای یک پوشه</td>
+			</tr>
+	
+			<tr>
+				<td class="command">git log</td>
+				<td class="description">نمایش فهرست کامیت های انجام شده</td>
+			</tr>
+			<tr>
+				<td class="command">git log --oneline</td>
+				<td class="description">نمایش فهرست عنوان تمام commitها بدون توضیحات</td>
+			</tr>
+			<tr>
+				<td class="command">git log --format=oneline</td>
+				<td class="description">نمایش فهرست عنوان تمام commitها بدون توضیحات به همراه کد کامل SHA-1</td>
+			</tr>
+			<tr>
+				<td class="command">git log --until="[2019-03-30 12:00:00]"</td>
+				<td class="description">commitهایی که قبل از تاریخ تعیین شده انجام شدند را فهرست می کند</td>
+			</tr>
+			<tr>
+				<td class="command">git log --after="[2019-04-01 20:00:00]"</td>
+				<td class="description">commitهایی که بعد از تاریخ تعیین شده انجام شدند را فهرست می کند</td>
+			</tr>
+			<tr>
+				<td class="command">git log --until="4 days ago"</td>
+				<td class="description">commitهایی که قبل از چهار روز پیش انجام شدند را نمایش می دهد</td>
+			</tr>
+			<tr>
+				<td class="command">git log --after="2 weeks ago"</td>
+				<td class="description">commitهایی که بعد از دو هفته پیش انجام شدند را نمایش می دهد</td>
+			</tr>
+			<tr>
+				<td class="command">git log --until="yesterday"</td>
+				<td class="description">commitهایی که تا دیروز انجام شدند را نمایش می دهد</td>
+			</tr>
+			<tr>
+				<td class="command">git log --author="[Morteza]"</td>
+				<td class="description">commitهایی که توسط Morteza انجام شدند را نمایش می دهد</td>
+			</tr>
+
+			<tr>
+				<td class="command">git log -[3]</td>
+				<td class="description">نمایش فهرست سه commit آخر</td>
+			</tr>
+
+			<tr>
+				<td class="command">git log --grep="[background]"</td>
+				<td class="description">commitهایی که در توضیحاتشون کلمه ی background وجود داشته باشد را نمایش می دهد</td>
+			</tr>
+
+			<tr>
+				<td class="command">git log [a4b57a1]..</td>
+				<td class="description">commitهایی که بعد از a4b57a1 انجام شدند را نمایش می دهد</td>
+			</tr>
+
+			<tr>
+				<td class="command">git log [index.html]</td>
+				<td class="description">تمام commitهایی که برای index.html انجام شده است را نمایش می دهد</td>
+			</tr>
+
+			<tr>
+				<td class="command">git log -p</td>
+				<td class="description">commitها را به همراه توضیحاتی در مورد تغییرات و تفاوت هایشان نمایش می دهد</td>
+			</tr>
+
+			<tr>
+				<td class="command">git log --stat</td>
+				<td class="description">تعداد خطوط حذف و اضافه شده در هر commit را نمایش می دهد</td>
+			</tr>
+
+			<tr>
+				<td class="command">git log --summary</td>
+				<td class="description">توضیحات مختصری در رابطه با commit نشان داده می شود</td>
+			</tr>
+
+			<tr>
+				<td class="command">git ls-tree [HEAD/master]</td>
+				<td class="description">
+					نمایش فهرست فایل ها و پوشه ها به همراه کد SHA-1 مربوط به هر کدام
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git merge [نام شاخه]</td>
+				<td class="description">
+					شاخه ی master را با شاخه ی تعیین شده merge می کند. تمام commitها را حفظ میکند. تمام commitهای شاخه ی master و شاخه ی تعیین شده را نگه میدارد و در یک commit جدید عملیات ادغام را انجام می دهد.
+				</td>
+			</tr>
+
+
+			<tr>
+				<td class="command">git merge --squash [نام شاخه]</td>
+				<td class="description">
+					تمام commitهای شاخه ی تعیین شده را با هم merge می کند و یکجا با آخرین commit شاخه ی اصلی merge می کند.
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git merge --abort</td>
+				<td class="description">
+					صرف نظر کردن از merge در صورتی که conlict رخ داده باشد
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git mv [نام فعلی] [نام جدید]</td>
+				<td class="description">نام فایل را تغییر می دهد و این تغییر را در staging index قرار می دهد</td>
+			</tr>
+			<tr>
+				<td class="command">git mv [مسیر فعلی] [مسیر جدید]</td>
+				<td class="description">تغییر مسیر فایل</td>
+			</tr>
+
+			<tr>
+				<td class="command">git push -u [alias] [branch]</td>
+				<td class="description">ارسال پروژه موجود برای remote</td>
+			</tr>
+
+			<tr>
+				<td class="command">git rebase [نام شاخه]</td>
+				<td class="description">
+					rebase بر خلاف merge ساده، برای ادغام کردن یک commit جدید نمی سازد و ادغام را با آخرین commit شاخه master انجام می دهد.
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git remote add [alias(origin)] [url]</td>
+				<td class="description">اضافه کردن remote</td>
+			</tr>			
+
+			<tr>
+				<td class="command">git remote</td>
+				<td class="description">مشاهده نام remote</td>
+			</tr>		
+
+			<tr>
+				<td class="command">git remote -v</td>
+				<td class="description">مشاهده urlهای fetch و  push</td>
+			</tr>	
+
+			<tr>
+				<td class="command">git remote rm [alias]</td>
+				<td class="description">حذف remote</td>
+			</tr>
+
+			<tr>
+				<td class="command">git reset HEAD</td>
+				<td class="description">بیرون کشیدن فایلها از staging index</td>
+			</tr>
+			<tr>
+				<td class="command">git reset HEAD [نام فایل]</td>
+				<td class="description">بیرون کشیدن یک فایل مشخص از staging index</td>
+			</tr>
+
+			<tr>
+				<td class="command">git reset --soft [hash code]</td>
+				<td class="description">محتوای repository directory تعیین شده را به staging index منتقل میکند. repository را به مرحله ی قبل بر می گرداند.</td>
+			</tr>
+			<tr>
+				<td class="command">git reset --mixed [hash code]</td>
+				<td class="description">repository را به مرحله ی قبل بر می گرداند. اگر پارامتری تعیین نشود mixed در نظر گرفته می شود.</td>
+			</tr>
+
+			<tr>
+				<td class="command">git reset --hard [hash code]</td>
+				<td class="description">محتوای یک repository directory خاص را به working directory منتقل می کند. در واقع بازگشت به یک نقطه ی خاص است.</td>
+			</tr>
+
+			<tr>
+				<td class="command">git rm [نام فایل]</td>
+				<td class="description">حذف فایل و قرار دادن این تغییر در staging index</td>
+			</tr>
+
+			<tr>
+				<td class="command">git rm --cached [نام فایل]</td>
+				<td class="description">
+					حذف فایل از repository directory بدون آنکه از working directory حذف شود
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git show [hash-code]</td>
+			<td class="description">
+				فاوت ها و تغییرات commit مشخص شده را نمایش می دهد.
+				میشه از کدهای HASH مربوط به یک   پوشه یا فایل  در خروجی دستور ls-tree برای نمایش فایلها و پوشه های درون  یک پوشه  یا نمایش محتوای یک فایل استفاده کرد
+			</td>
+			</tr>
+			<tr>
+				<td class="command">git show HEAD^^/HEAD~2</td>
+				<td class="description">
+					تفاوت ها و تغییرات مربوط به دو commit قبل از HEAD (پدر پدر HEAD) را نمایش می دهد
+				</td>
+			</tr>
+
+			<tr>
+				<td class="command">git status</td>
+				<td class="description">نمایش وضعیت تغییرات</td>
+			</tr>
+
+			<tr>
+				<td class="command">git stash save</td>
+				<td class="description">زمانی که در یک شاخه تغییرات commit نشده داریم نمی توانیم به شاخه ی دیگر checkout کنیم. یکی از راه حل ها این است که از این دستور استفاده کنیم و تغییرات را در انبار ذخیره کنیم.</td>
+			</tr>
+
+			<tr>
+				<td class="command">git stash list</td>
+				<td class="description">فهرست stashها یا موارد ذخیره شده در انبار را نمایش می دهد.</td>
+			</tr>
+			
+			<tr>
+				<td class="command">git stash show stash@{0}</td>
+				<td class="description">نمایش آمار تغییرات مربوط به انبار stash 0</td>
+			</tr>
+
+			<tr>
+				<td class="command">git stash show -p stash@{0}</td>
+				<td class="description">نمایش تفاوت های مربوط به انبار stash 0</td>
+			</tr>
+
+			<tr>
+				<td class="command">git stash pop stash@{1}</td>
+				<td class="description">stash انتخاب شده را به working directory بر می گرداند و آن را از فهرست انبار stash حذف می کند. اگه مشخص نشود کدام stash، از آخر فهرست stash ها بر می دارد.</td>
+			</tr>
+
+			<tr>
+				<td class="command">git stash apply</td>
+				<td class="description">اعمال تغییرات یک مورد از انبار stach روی  working directory بدون اینکه آن مورد از انبار stash حذف شود</td>
+			</tr>
+
+			<tr>
+				<td class="command">git stash clear</td>
+				<td class="description">پاک کردن انبار stash</td>
+			</tr>
+
+			<tr>
+				<td class="command">git stash drop stash@{2}</td>
+				<td class="description">حذف یک مورد از انبار stash</td>
+			</tr>
+
+		</table>
+	</div>
+</body>
+</html>
